@@ -31,7 +31,7 @@ class Media extends Model implements Responsable, Htmlable
     protected $guarded = [];
 
     protected $casts = [
-        'manipulations' => 'array',
+        'manipulations'     => 'array',
         'custom_properties' => 'array',
         'responsive_images' => 'array',
     ];
@@ -85,7 +85,7 @@ class Media extends Model implements Responsable, Htmlable
     {
         $type = $this->getTypeFromExtension();
 
-        if ($type !== self::TYPE_OTHER) {
+        if (self::TYPE_OTHER !== $type) {
             return $type;
         }
 
@@ -145,7 +145,7 @@ class Media extends Model implements Responsable, Htmlable
      * Get the value of custom property with the given name.
      *
      * @param string $propertyName
-     * @param mixed $default
+     * @param mixed  $default
      *
      * @return mixed
      */
@@ -156,7 +156,7 @@ class Media extends Model implements Responsable, Htmlable
 
     /**
      * @param string $name
-     * @param mixed $value
+     * @param mixed  $value
      *
      * @return $this
      */
@@ -218,18 +218,18 @@ class Media extends Model implements Responsable, Htmlable
     /**
      * Create an HTTP response that represents the object.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
      *
      * @return \Illuminate\Http\Response
      */
     public function toResponse($request)
     {
         $downloadHeaders = [
-            'Cache-Control' => 'must-revalidate, post-check=0, pre-check=0',
-            'Content-Type' => $this->mime_type,
-            'Content-Length' => $this->size,
+            'Cache-Control'       => 'must-revalidate, post-check=0, pre-check=0',
+            'Content-Type'        => $this->mime_type,
+            'Content-Length'      => $this->size,
             'Content-Disposition' => 'attachment; filename="'.$this->file_name.'"',
-            'Pragma' => 'public',
+            'Pragma'              => 'public',
         ];
 
         return response()->stream(function () {
@@ -265,7 +265,7 @@ class Media extends Model implements Responsable, Htmlable
 
     /**
      * @param string|array $conversion
-     * @param array $extraAttributes
+     * @param array        $extraAttributes
      *
      * @return string
      */

@@ -149,12 +149,12 @@ class ResponsiveImageGenerator
 
         $mimeType = File::getMimetype($tinyPlaceholderPath);
 
-        if ($mimeType !== 'image/jpeg') {
+        if ('image/jpeg' !== $mimeType) {
             throw InvalidTinyJpg::hasWrongMimeType($tinyPlaceholderPath);
         }
     }
 
-    protected function cleanResponsiveImages(Media $media, string $conversionName = 'medialibrary_original') : Media
+    protected function cleanResponsiveImages(Media $media, string $conversionName = 'medialibrary_original'): Media
     {
         $responsiveImages = $media->responsive_images;
         $responsiveImages[$conversionName]['urls'] = [];

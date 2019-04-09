@@ -110,12 +110,12 @@ trait HasMediaTrait
     /**
      * Add a remote file to the medialibrary.
      *
-     * @param string $url
+     * @param string       $url
      * @param string|array ...$allowedMimeTypes
      *
-     * @return \Spatie\MediaLibrary\FileAdder\FileAdder
-     *
      * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded
+     *
+     * @return \Spatie\MediaLibrary\FileAdder\FileAdder
      */
     public function addMediaFromUrl(string $url, ...$allowedMimeTypes)
     {
@@ -131,7 +131,7 @@ trait HasMediaTrait
         $filename = basename(parse_url($url, PHP_URL_PATH));
         $filename = str_replace('%20', ' ', $filename);
 
-        if ($filename === '') {
+        if ('' === $filename) {
             $filename = 'file';
         }
 
@@ -150,7 +150,7 @@ trait HasMediaTrait
     /**
      * Add a base64 encoded file to the medialibrary.
      *
-     * @param string $base64data
+     * @param string       $base64data
      * @param string|array ...$allowedMimeTypes
      *
      * @throws InvalidBase64Data
@@ -161,13 +161,13 @@ trait HasMediaTrait
     public function addMediaFromBase64(string $base64data, ...$allowedMimeTypes): FileAdder
     {
         // strip out data uri scheme information (see RFC 2397)
-        if (strpos($base64data, ';base64') !== false) {
+        if (false !== strpos($base64data, ';base64')) {
             [$_, $base64data] = explode(';', $base64data);
             [$_, $base64data] = explode(',', $base64data);
         }
 
         // strict mode filters for non-base64 alphabet characters
-        if (base64_decode($base64data, true) === false) {
+        if (false === base64_decode($base64data, true)) {
             throw InvalidBase64Data::create();
         }
 
@@ -212,7 +212,7 @@ trait HasMediaTrait
     /**
      * Get media collection by its collectionName.
      *
-     * @param string $collectionName
+     * @param string         $collectionName
      * @param array|callable $filters
      *
      * @return \Illuminate\Support\Collection
@@ -222,7 +222,7 @@ trait HasMediaTrait
         return app(MediaRepository::class)->getCollection($this, $collectionName, $filters);
     }
 
-    public function getFirstMedia(string $collectionName = 'default', array $filters = []): ?Media
+    public function getFirstMedia(string $collectionName = 'default', array $filters = []): ? Media
     {
         $media = $this->getMedia($collectionName, $filters);
 
@@ -280,12 +280,12 @@ trait HasMediaTrait
     /**
      * Update a media collection by deleting and inserting again with new values.
      *
-     * @param array $newMediaArray
+     * @param array  $newMediaArray
      * @param string $collectionName
      *
-     * @return \Illuminate\Support\Collection
-     *
      * @throws \Spatie\MediaLibrary\Exceptions\MediaCannotBeUpdated
+     *
+     * @return \Illuminate\Support\Collection
      */
     public function updateMedia(array $newMediaArray, string $collectionName = 'default'): Collection
     {
@@ -351,7 +351,7 @@ trait HasMediaTrait
     /**
      * Remove all media in the given collection except some.
      *
-     * @param string $collectionName
+     * @param string                                                             $collectionName
      * @param \Spatie\MediaLibrary\Models\Media[]|\Illuminate\Support\Collection $excludedMedia
      *
      * @return $this
@@ -411,6 +411,10 @@ trait HasMediaTrait
     {
         $conversion = Conversion::create($name);
 
+        if (! config('medialibrary.prepend_original_name_to_conversions')) {
+            $conversion->dontPrependOriginalName();
+        }
+
         $this->mediaConversions[] = $conversion;
 
         return $conversion;
@@ -462,12 +466,12 @@ trait HasMediaTrait
     public function loadMedia(string $collectionName)
     {
         $collection = $this->exists
-            ? $this->media
-            : collect($this->unAttachedMediaLibraryItems)->pluck('media');
+        ? $this->media
+        : collect($this->unAttachedMediaLibraryItems)->pluck('media');
 
         return $collection
             ->filter(function (Media $mediaItem) use ($collectionName) {
-                if ($collectionName == '') {
+                if ('' == $collectionName) {
                     return true;
                 }
 

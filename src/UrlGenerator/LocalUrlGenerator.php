@@ -10,9 +10,9 @@ class LocalUrlGenerator extends BaseUrlGenerator
     /**
      * Get the url for a media item.
      *
-     * @return string
-     *
      * @throws \Spatie\MediaLibrary\Exceptions\UrlCannotBeDetermined
+     *
+     * @return string
      */
     public function getUrl(): string
     {
@@ -29,9 +29,9 @@ class LocalUrlGenerator extends BaseUrlGenerator
      * @param \DateTimeInterface $expiration
      * @param array              $options
      *
-     * @return string
-     *
      * @throws \Spatie\MediaLibrary\Exceptions\UrlCannotBeDetermined
+     *
+     * @return string
      */
     public function getTemporaryUrl(DateTimeInterface $expiration, array $options = []): string
     {
@@ -70,7 +70,7 @@ class LocalUrlGenerator extends BaseUrlGenerator
     /*
      * Get the path where the whole medialibrary is stored.
      */
-    protected function getStoragePath() : string
+    protected function getStoragePath(): string
     {
         $diskRootPath = $this->config->get("filesystems.disks.{$this->media->disk}.root");
 

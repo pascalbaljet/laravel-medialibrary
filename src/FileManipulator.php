@@ -24,8 +24,8 @@ class FileManipulator
      * Create all derived files for the given media.
      *
      * @param \Spatie\MediaLibrary\Models\Media $media
-     * @param array $only
-     * @param bool $onlyIfMissing
+     * @param array                             $only
+     * @param bool                              $onlyIfMissing
      */
     public function createDerivedFiles(Media $media, array $only = [], $onlyIfMissing = false)
     {
@@ -54,8 +54,8 @@ class FileManipulator
      * Perform the given conversions for the given media.
      *
      * @param \Spatie\MediaLibrary\Conversion\ConversionCollection $conversions
-     * @param \Spatie\MediaLibrary\Models\Media $media
-     * @param bool $onlyIfMissing
+     * @param \Spatie\MediaLibrary\Models\Media                    $media
+     * @param bool                                                 $onlyIfMissing
      */
     public function performConversions(ConversionCollection $conversions, Media $media, $onlyIfMissing = false)
     {

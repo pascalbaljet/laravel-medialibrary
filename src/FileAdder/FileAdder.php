@@ -54,7 +54,7 @@ class FileAdder
     /** @var string */
     protected $diskName = '';
 
-    /** @var null|callable */
+    /** @var callable|null */
     protected $fileNameSanitizer;
 
     /** @var bool */
@@ -252,14 +252,14 @@ class FileAdder
 
     protected function determineDiskName(string $diskName, string $collectionName): string
     {
-        if ($diskName !== '') {
+        if ('' !== $diskName) {
             return $diskName;
         }
 
         if ($collection = $this->getMediaCollection($collectionName)) {
             $collectionDiskName = $collection->diskName;
 
-            if ($collectionDiskName !== '') {
+            if ('' !== $collectionDiskName) {
                 return $collectionDiskName;
             }
         }

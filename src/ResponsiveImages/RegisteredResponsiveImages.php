@@ -19,7 +19,7 @@ class RegisteredResponsiveImages
     {
         $this->media = $media;
 
-        $this->generatedFor = $conversionName === ''
+        $this->generatedFor = '' === $conversionName
             ? 'medialibrary_original'
             : $conversionName;
 

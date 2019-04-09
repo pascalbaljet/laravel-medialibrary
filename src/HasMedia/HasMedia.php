@@ -39,7 +39,7 @@ interface HasMedia
      *
      * @return bool
      */
-    public function hasMedia(string $collectionMedia = '') : bool;
+    public function hasMedia(string $collectionMedia = ''): bool;
 
     /**
      * Get media collection by its collectionName.
@@ -61,7 +61,7 @@ interface HasMedia
     /**
      * Remove all media in the given collection except some.
      *
-     * @param string $collectionName
+     * @param string                                                      $collectionName
      * @param \Spatie\MediaLibrary\Media[]|\Illuminate\Support\Collection $excludedMedia
      *
      * @return string $collectionName

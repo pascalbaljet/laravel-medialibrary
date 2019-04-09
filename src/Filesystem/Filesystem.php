@@ -40,7 +40,7 @@ class Filesystem
 
         $file = fopen($pathToFile, 'r');
 
-        if ($media->getDiskDriverName() === 'local') {
+        if ('local' === $media->getDiskDriverName()) {
             $this->filesystem
                 ->disk($media->disk)
                 ->put($destination, $file);
@@ -64,7 +64,7 @@ class Filesystem
         $this->customRemoteHeaders = $customRemoteHeaders;
     }
 
-    public function getRemoteHeadersForFile(string $file, array $mediaCustomHeaders = []) : array
+    public function getRemoteHeadersForFile(string $file, array $mediaCustomHeaders = []): array
     {
         $mimeTypeHeader = ['ContentType' => File::getMimeType($file)];
 
@@ -182,7 +182,7 @@ class Filesystem
         }
     }
 
-    public function getMediaDirectory(Media $media, ?string $type = null) : string
+    public function getMediaDirectory(Media $media, ?string $type = null): string
     {
         $pathGenerator = PathGeneratorFactory::create();
 
@@ -190,11 +190,11 @@ class Filesystem
             $directory = $pathGenerator->getPath($media);
         }
 
-        if ($type === 'conversions') {
+        if ('conversions' === $type) {
             $directory = $pathGenerator->getPathForConversions($media);
         }
 
-        if ($type === 'responsiveImages') {
+        if ('responsiveImages' === $type) {
             $directory = $pathGenerator->getPathForResponsiveImages($media);
         }
 
@@ -205,12 +205,12 @@ class Filesystem
         return $directory;
     }
 
-    public function getConversionDirectory(Media $media) : string
+    public function getConversionDirectory(Media $media): string
     {
         return $this->getMediaDirectory($media, 'conversions');
     }
 
-    public function getResponsiveImagesDirectory(Media $media) : string
+    public function getResponsiveImagesDirectory(Media $media): string
     {
         return $this->getMediaDirectory($media, 'responsiveImages');
     }

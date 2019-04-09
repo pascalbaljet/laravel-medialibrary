@@ -47,9 +47,9 @@ class ConversionCollection extends Collection
      *
      * @param string $name
      *
-     * @return mixed
-     *
      * @throws \Spatie\MediaLibrary\Exceptions\InvalidConversion
+     *
+     * @return mixed
      */
     public function getByName(string $name): Conversion
     {
@@ -107,7 +107,7 @@ class ConversionCollection extends Collection
 
     public function getConversions(string $collectionName = ''): self
     {
-        if ($collectionName === '') {
+        if ('' === $collectionName) {
             return $this;
         }
 
@@ -131,7 +131,7 @@ class ConversionCollection extends Collection
             return $conversion->getName() === $conversionName;
         }))->addAsFirstManipulations($manipulations);
 
-        if ($conversionName === '*') {
+        if ('*' === $conversionName) {
             $this->each->addAsFirstManipulations(clone $manipulations);
         }
     }

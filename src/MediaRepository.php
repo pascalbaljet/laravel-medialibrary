@@ -24,8 +24,8 @@ class MediaRepository
      * Get all media in the collection.
      *
      * @param \Spatie\MediaLibrary\HasMedia\HasMedia $model
-     * @param string $collectionName
-     * @param array|callable $filter
+     * @param string                                 $collectionName
+     * @param array|callable                         $filter
      *
      * @return \Illuminate\Support\Collection
      */
@@ -38,7 +38,7 @@ class MediaRepository
      * Apply given filters on media.
      *
      * @param \Illuminate\Support\Collection $media
-     * @param array|callable $filter
+     * @param array|callable                 $filter
      *
      * @return \Illuminate\Support\Collection
      */

@@ -43,7 +43,7 @@ interface UrlGenerator
      * Get the temporary url for a media item.
      *
      * @param DateTimeInterface $expiration
-     * @param array              $options
+     * @param array             $options
      *
      * @return string
      */

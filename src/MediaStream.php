@@ -80,7 +80,7 @@ class MediaStream implements Responsable
         return $this->mediaItems->map(function (Media $media, $mediaItemIndex) {
             return [
                 'fileNameInZip' => $this->getFileNameWithSuffix($this->mediaItems, $mediaItemIndex),
-                'media' => $media,
+                'media'         => $media,
             ];
         });
     }
@@ -97,11 +97,11 @@ class MediaStream implements Responsable
             }
 
             if ($media->file_name === $fileName) {
-                $fileNameCount++;
+                ++$fileNameCount;
             }
         }
 
-        if ($fileNameCount === 0) {
+        if (0 === $fileNameCount) {
             return $fileName;
         }
 

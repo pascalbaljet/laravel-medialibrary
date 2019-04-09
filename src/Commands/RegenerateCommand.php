@@ -82,7 +82,7 @@ class RegenerateCommand extends Command
         $modelType = $this->argument('modelType') ?? '';
         $mediaIds = $this->getMediaIds();
 
-        if ($modelType === '' && count($mediaIds) === 0) {
+        if ('' === $modelType && 0 === count($mediaIds)) {
             return $this->mediaRepository->all();
         }
 
@@ -101,7 +101,7 @@ class RegenerateCommand extends Command
             $mediaIds = explode(',', $mediaIds);
         }
 
-        if (count($mediaIds) === 1 && str_contains($mediaIds[0], ',')) {
+        if (1 === count($mediaIds) && str_contains($mediaIds[0], ',')) {
             $mediaIds = explode(',', $mediaIds[0]);
         }
 

@@ -9,7 +9,7 @@ use Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\RequestDoesNotHaveFile;
 class FileAdderFactory
 {
     /**
-     * @param \Illuminate\Database\Eloquent\Model $subject
+     * @param \Illuminate\Database\Eloquent\Model                        $subject
      * @param string|\Symfony\Component\HttpFoundation\File\UploadedFile $file
      *
      * @return \Spatie\MediaLibrary\FileAdder\FileAdder

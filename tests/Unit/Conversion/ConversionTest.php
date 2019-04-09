@@ -3,8 +3,8 @@
 namespace Spatie\MediaLibrary\Tests\Unit\Conversion;
 
 use Spatie\Image\Manipulations;
-use Spatie\MediaLibrary\Tests\TestCase;
 use Spatie\MediaLibrary\Conversion\Conversion;
+use Spatie\MediaLibrary\Tests\TestCase;
 
 class ConversionTest extends TestCase
 {
@@ -24,6 +24,18 @@ class ConversionTest extends TestCase
     public function it_can_get_its_name()
     {
         $this->assertEquals($this->conversionName, $this->conversion->getName());
+    }
+
+    /** @test */
+    public function it_can_generate_a_conversion_file_name()
+    {
+        $this->assertEquals('my-image-test.jpg', $this->conversion->getConversionFile('my-image.jpg'));
+    }
+
+    /** @test */
+    public function it_can_generate_a_conversion_file_name_without_the_original_name_prepended()
+    {
+        $this->assertEquals('test.jpg', $this->conversion->dontPrependOriginalName()->getConversionFile('my-image.jpg'));
     }
 
     /** @test */
@@ -141,7 +153,7 @@ class ConversionTest extends TestCase
         unset($manipulations[0]['optimize']);
 
         $this->assertEquals([[
-            'width' => 10,
+            'width'  => 10,
             'format' => 'jpg',
         ]], $manipulations);
     }
@@ -163,7 +175,7 @@ class ConversionTest extends TestCase
         unset($manipulations[0]['optimize']);
 
         $this->assertEquals([[
-            'width' => 10,
+            'width'  => 10,
             'format' => 'jpg',
         ]], $manipulations);
     }

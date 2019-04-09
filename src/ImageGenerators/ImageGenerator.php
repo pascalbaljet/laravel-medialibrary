@@ -12,12 +12,12 @@ interface ImageGenerator
     /**
      * Receive a file and return a thumbnail in jpg/png format.
      *
-     * @param string $path
+     * @param string                                          $path
      * @param \Spatie\MediaLibrary\Conversion\Conversion|null $conversion
      *
      * @return string
      */
-    public function convert(string $path, Conversion $conversion = null) : string;
+    public function convert(string $path, Conversion $conversion = null): string;
 
     public function canHandleMime(string $mime = ''): bool;
 

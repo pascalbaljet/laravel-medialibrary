@@ -9,7 +9,7 @@ use Spatie\MediaLibrary\PathGenerator\PathGeneratorFactory;
 
 class UrlGeneratorFactory
 {
-    public static function createForMedia(Media $media, string $conversionName = '') : UrlGenerator
+    public static function createForMedia(Media $media, string $conversionName = ''): UrlGenerator
     {
         $urlGeneratorClass = config('medialibrary.url_generator')
             ?: 'Spatie\MediaLibrary\UrlGenerator\\'.ucfirst($media->getDiskDriverName()).'UrlGenerator';
@@ -23,7 +23,7 @@ class UrlGeneratorFactory
             ->setMedia($media)
             ->setPathGenerator($pathGenerator);
 
-        if ($conversionName !== '') {
+        if ('' !== $conversionName) {
             $conversion = ConversionCollection::createForMedia($media)->getByName($conversionName);
 
             $urlGenerator->setConversion($conversion);
