@@ -97,7 +97,7 @@ class MediaStream implements Responsable
             }
 
             if ($media->file_name === $fileName) {
-                ++$fileNameCount;
+                $fileNameCount++;
             }
         }
 
