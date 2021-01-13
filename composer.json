@@ -23,11 +23,12 @@
   ],
   "require": {
     "php": "^7.2",
-    "illuminate/bus": "~5.5.0|~5.6.0|~5.7.0|~5.8.0",
-    "illuminate/console": "~5.5.0|~5.6.0|~5.7.0|~5.8.0",
-    "illuminate/database": "~5.5.0|~5.6.0|~5.7.0|~5.8.0",
-    "illuminate/pipeline": "~5.5.0|~5.6.0|~5.7.0|~5.8.0",
-    "illuminate/support": "~5.5.0|~5.6.0|~5.7.0|~5.8.0",
+    "illuminate/bus": "~5.5.0|~5.6.0|~5.7.0|~5.8.0|~6.0",
+    "illuminate/console": "~5.5.0|~5.6.0|~5.7.0|~5.8.0|~6.0",
+    "illuminate/database": "~5.5.0|~5.6.0|~5.7.0|~5.8.0|~6.0",
+    "illuminate/pipeline": "~5.5.0|~5.6.0|~5.7.0|~5.8.0|~6.0",
+    "illuminate/support": "~5.5.0|~5.6.0|~5.7.0|~5.8.0|~6.0",
+    "laravel/helpers": "^1.4",
     "league/flysystem": "^1.0.8",
     "maennchen/zipstream-php": "~0.4",
     "spatie/image": "^1.4.0",
@@ -40,8 +41,8 @@
     "guzzlehttp/guzzle": "^6.3",
     "league/flysystem-aws-s3-v3": "^1.0.13",
     "mockery/mockery": "^1.0.0",
-    "orchestra/testbench": "~3.8.0",
-    "phpunit/phpunit" : "^8.0",
+    "orchestra/testbench": "~3.8.0|~4.0",
+    "phpunit/phpunit": "^8.0",
     "spatie/phpunit-snapshot-assertions": "^2.0"
   },
   "conflict": {
